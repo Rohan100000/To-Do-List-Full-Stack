@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 const port = 8000;
+const db = require('./config/mongoose');
+
+// using middleware to specify the static files
+app.use(express.static('./assets'));
 
 // use express router using middleware
 app.use('/',require('./routes/index.js'));
