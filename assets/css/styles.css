@@ -41,12 +41,12 @@ ul li:hover {
   cursor: pointer;
 }
 
-#list label {
+#list p {
   position: relative;
   cursor: pointer;
 }
 
-#list label:before {
+#list p:before {
   content:'';
   -webkit-appearance: none;
   /* background-color: transparent; */
@@ -59,7 +59,7 @@ ul li:hover {
   cursor: pointer;
   margin-right: 10px;
 }
-#list input:checked + label:after {
+#list input:checked + p:after {
   content: '';
   display: block;
   position: absolute;
@@ -74,7 +74,7 @@ ul li:hover {
 /* #list input:checked + label:before {
   /* background: #0000007a;
 }  */
-#list input:checked + label {
+#list input:checked + p {
   text-decoration: line-through;
 }
 .delete {

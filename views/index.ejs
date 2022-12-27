@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= title %></title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
-</head>
-
-<body>
-  <h1>Todo List App</h1>
-  <div id="container">
-    <input placeholder="Add a task" class="add-task" id="add" data-helloWord="asdasdas" />
-    <span id="total-tasks">Total tasks: <span id="tasks-counter">0</span></span>
-    <ul id="list">
-      <!-- <li>
-        <input type="checkbox" id="task1" data-id="12" class="custom-checkbox" />
-        <label for="task1">Buy groceries</label>
-        <img src="bin.svg" class="delete" data-id="12"/>
-      </li> -->
-    </ul>
-  </div>
-  <script src="todo.js"></script>
-</body>
-
+  <body>
+    <h1>Todo List App</h1>
+    <div id="container">
+      <form action="/todos/create" method="post">
+        <input
+          type="text"
+          name="task"
+          placeholder="Add a task"
+          class="add-task"
+          id="add"
+          required
+        />
+        <button type="submit">Add to list</button>
+      </form>
+      <span id="total-tasks"
+        >Total tasks: <span id="tasks-counter">0</span>
+      </span>
+      <ul id="list">
+        <% for(let i of todo_list){ %>
+        <li>
+          <!-- <form action="/todos/toggle-checkbox" method="post"> -->
+          <input
+            type="checkbox"
+            name="<%=i.id%>"
+            id="<%=i.id%>"
+            class="custom-checkbox"
+            data-check="<%= i.completed %>"
+          />
+          <!-- </form> -->
+          <p><%= i.task %></p>
+          <img src="/images/bin2.svg" alt="bin" class="delete" data-id="12" />
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <script src="/js/check.js"></script>
+  </body>
 </html>

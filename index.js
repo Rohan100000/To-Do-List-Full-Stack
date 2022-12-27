@@ -1,7 +1,10 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 8000;
 const db = require('./config/mongoose');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // using middleware to specify the static files
 app.use(express.static('./assets'));
